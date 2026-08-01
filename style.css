@@ -1220,6 +1220,7 @@ body.dark .pos-badge{
 .ocr-viewer {
     display: none;
     white-space: pre-wrap;
+    overflow-wrap: anywhere; /* keep long unbroken words inside the box */
     line-height: 2;
     font-size: 17px;
     padding: 16px;

@@ -102,14 +102,14 @@ function renderOcrEditor(text){
 
 tokens.forEach(token => {
 
-    // Preserve spaces and newlines
+    // Preserve spaces and newlines.
+    // Ordinary spaces (kept by white-space: pre-wrap) stay breakable,
+    // so long lines wrap inside the viewer instead of overflowing it.
     if (/^\s+$/.test(token)) {
 
         viewer.insertAdjacentHTML(
             "beforeend",
-            token
-                .replace(/ /g, "&nbsp;")
-                .replace(/\n/g, "<br>")
+            token.replace(/\n/g, "<br>")
         );
 
         return;

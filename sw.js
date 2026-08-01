@@ -1,5 +1,5 @@
-// SabdhaSathi Service Worker v4
-const CACHE_NAME = 'sabdhasathi-v5';
+// SabdhaSathi Service Worker v5
+const CACHE_NAME = 'sabdhasathi-v6';
 const ASSETS = [
     './',
     './index.html',
