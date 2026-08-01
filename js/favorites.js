@@ -17,8 +17,10 @@ function saveFavorites(favorites) {
     );
 }
 
-function isFavorite(word) {
-    return getFavorites().some(item => item.word === word);
+function isFavorite(id) {
+
+    return getFavorites().some(item => item.id === id);
+
 }
 
 function toggleFavorite(wordObject) {
@@ -26,16 +28,20 @@ function toggleFavorite(wordObject) {
     let favorites = getFavorites();
 
     const exists = favorites.find(
-        item => item.word === wordObject.word
+    item => item.id === wordObject.id
+);
+
+if (exists) {
+
+    favorites = favorites.filter(
+        item => item.id !== wordObject.id
     );
 
-    if (exists) {
-        favorites = favorites.filter(
-            item => item.word !== wordObject.word
-        );
-    } else {
-        favorites.push(wordObject);
-    }
+} else {
+
+    favorites.push(wordObject);
+
+}
 
     saveFavorites(favorites);
 }

@@ -2,14 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>SabdhaSathi</title>
+    <meta name="description" content="Offline Nepali Dictionary with spell-check, favorites, and camera OCR scanner">
+    <meta name="theme-color" content="#2563EB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SabdhaSathi">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/icons/favicon.png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json?v=5">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
-<<header class="top-bar">
+<header class="top-bar">
 
     <div class="app-info">
         <h1>SabdhaSathi</h1>
@@ -22,7 +30,9 @@
             <span class="material-symbols-rounded">dark_mode</span>
         </button>
 
-        <button class="icon-btn">
+        <button
+    class="icon-btn"
+    id="topSettingsBtn">
             <span class="material-symbols-rounded">settings</span>
         </button>
 
@@ -46,14 +56,20 @@
             autocomplete="off">
 
         <button id="clearBtn" class="clear-btn">
+
             <span class="material-symbols-rounded">
                 close
             </span>
+
         </button>
 
     </div>
 
+    <div id="suggestions" class="suggestions"></div>
+
 </section>
+
+
 
     <section id="results">
         <p class="welcome">
@@ -61,35 +77,82 @@
             खोजी सुरु गर्न माथिको बाकसमा शब्द टाइप गर्नुहोस्।
         </p>
     </section>
+
     <section id="wordDetails" class="word-details hidden"></section>
 
 </main>
 
-<script src="js/dictionary.js"></script>
-<script src="js/search.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/favorites.js"></script>
-<script src="js/history.js"></script>
-<script src="js/utils.js"></script>
-<script src="js/app.js"></script>
-
 <nav class="bottom-nav">
 
-    <button class="nav-item active">
+    <button class="nav-item active" id="homeNav">
         <span class="material-symbols-rounded">home</span>
         <span>Home</span>
     </button>
 
-    <button class="nav-item">
+    <button class="nav-item" id="scanNav">
+
+    <span class="material-symbols-rounded">
+        document_scanner
+    </span>
+
+    <span>Scan</span>
+
+</button>
+
+    <button class="nav-item" id="favoritesNav">
         <span class="material-symbols-rounded">favorite</span>
         <span>Favorites</span>
     </button>
 
-    <button class="nav-item">
+    <button class="nav-item" id="settingsNav">
         <span class="material-symbols-rounded">settings</span>
         <span>Settings</span>
     </button>
 
 </nav>
+
+<div id="ocrPopup" class="ocr-popup hidden">
+
+    <div class="ocr-popup-box">
+
+        <div id="ocrPopupContent"></div>
+
+    </div>
+
+</div>
+
+<script src="vendor/tesseract/tesseract.min.js?v=5"></script>
+<script src="js/dictionary.js?v=5"></script>
+<script src="js/search.js?v=5"></script>
+<script src="js/levenshtein.js?v=5"></script>
+<script src="js/spellcheck.js?v=5"></script>
+<script src="js/ui.js?v=5"></script>
+<script src="js/favorites.js?v=5"></script>
+<script src="js/history.js?v=5"></script>
+<script src="js/utils.js?v=5"></script>
+<script src="js/ocrEditor.js?v=5"></script>
+<script src="js/pages.js?v=5"></script>
+<script src="js/imageProcessor.js?v=5"></script>
+<script src="js/app.js?v=5"></script>
+
+
+<input
+    type="file"
+    id="imagePicker"
+    accept="image/*"
+    hidden>
+
+<div id="toast" class="toast"></div>
+
+<div id="undoSnackbar" class="undo-snackbar hidden">
+
+    <span id="undoText"></span>
+
+    <button id="undoAction">
+        ↶ Undo
+    </button>
+
+</div>
+
 </body>
 </html>
